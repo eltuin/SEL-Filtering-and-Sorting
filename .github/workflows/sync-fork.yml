@@ -1,0 +1,24 @@
+name: Sync fork with upstream
+
+# GitHub Actions cron cannot express an exact "every 36 hours" interval
+# (36 is not a divisor of 24), so this runs once a day, close to the
+# requested cadence, using the standard `gh repo sync` approach.
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync fork with upstream
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh repo sync "${{ github.repository }}" \
+            --source Tam-Taro/SEL-Filtering-and-Sorting \
+            --branch main
