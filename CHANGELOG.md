@@ -1,4 +1,9 @@
 # Changelog
+## 3.2.11 (2026-10-15)
+**New**
+- "Device Specific Exclusions" under advanced filters now has a toggle to "Penalize Instead of Exclude"
+  - Apply a -10,000 SEL score to selected Device Specific Exclusions instead of removing them outright. The Low SEL Score logic will retain these negative-scored results only when less than 10 positive-scored results exist; otherwise, they are hidden.
+
 ## 3.2.10 (2026-10-13)
 **Fix**
 - `Soft Bitrate Cap` under Bitrate Options wasn't working, now correctly boosts "Low Bitrate" streams by 10000 SEL score
